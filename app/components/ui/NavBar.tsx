@@ -1,17 +1,33 @@
 import {
-  NavigationMenu, NavigationMenuContent,
-  NavigationMenuItem, NavigationMenuLink,
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger
 } from "~/components/ui/NavigationMenu";
 import {cn} from "~/lib/lib";
 import {Link} from "@remix-run/react";
 import React from "react";
+import type {Team} from "~/types";
 
 export type NavigationItem = {
   title: string;
   href: string;
   description: string;
+};
+
+const createNavigationItems = (teams: Team[]) => {
+  return (
+      teams.map((team: Team) => {
+        const seasonCode = '2324' // @TODO: get current season
+        return {
+          title: team.league.name,
+          href: `/teams/${team.id}/season/${seasonCode}`,
+          description: "",
+        };
+      })
+  ) as NavigationItem[];
 };
 
 const staticItems = [
@@ -33,10 +49,13 @@ const staticItems = [
 ];
 
 export function NavBar({
-  navigationItems,
+  teams,
 }: {
-  navigationItems: NavigationItem[];
+  teams: Team[];
 }) {
+
+  const navigationItems = createNavigationItems(teams);
+
   return (
     <div className="bg-black">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

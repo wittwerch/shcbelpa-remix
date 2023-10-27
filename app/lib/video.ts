@@ -2,6 +2,9 @@ import type {Video} from "~/types";
 
 export const fetchVideos = async () => {
 
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+
+
     try {
         const response = await fetch("https://sport.video/search/search-api/", {
             method: "POST",

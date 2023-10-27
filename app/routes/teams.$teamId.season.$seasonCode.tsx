@@ -12,6 +12,9 @@ export async function loader({ params, }: LoaderFunctionArgs) {
 
     const data = await getSeason(params.teamId, params.seasonCode);
 
+    // wait 2s
+    // await new Promise(resolve => setTimeout(resolve, 2000));
+
     return {
         ...data,
         seasonCode: params.seasonCode,

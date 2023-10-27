@@ -1,15 +1,26 @@
 import type {LinksFunction} from "@remix-run/node";
-import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration,} from "@remix-run/react";
+import {Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration, useLoaderData,} from "@remix-run/react";
 import stylesheet from "~/tailwind.css";
 import Footer from "~/components/ui/Footer";
 import {NavBar} from "~/components/ui/NavBar";
+import {fetchTeams} from "~/lib/api";
 
 export const links: LinksFunction = () => [
   { rel: "stylesheet", href: stylesheet },
 ];
 
+export const loader = async () => {
+
+    // @TODO: Use a getTeams call here
+    const teams = await fetchTeams();
+
+    return { teams };
+};
 
 export default function App() {
+
+    const data = useLoaderData<typeof loader>();
+
   return (
     <html lang="en" className="h-full bg-gray-100">
       <head>
@@ -21,7 +32,7 @@ export default function App() {
       <body className="h-full">
 
       <div className={`min-h-full`}>
-        <NavBar navigationItems={[]} />
+        <NavBar teams={data.teams} />
         <Outlet />
       </div>
       <Footer />
