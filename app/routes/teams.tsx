@@ -3,7 +3,7 @@ import {Outlet, useLoaderData, useNavigation, useRouteLoaderData} from "@remix-r
 import TeamHero from "~/components/TeamHero";
 import type {LoaderFunctionArgs} from "@remix-run/node";
 import invariant from "tiny-invariant";
-import {currentSeason} from "~/lib/api";
+import {getCurrentSeason} from "~/lib/api";
 import PrimaryTitle from "~/components/ui/primary-title";
 import {TeamTabs} from "~/components/ui/TeamTabs";
 import {cn} from "~/lib/lib";
@@ -17,7 +17,7 @@ export async function loader({ params, }: LoaderFunctionArgs) {
 
     invariant(params.teamId, "Missing teamId param");
 
-    const season = await currentSeason(params.teamId);
+    const season = await getCurrentSeason(params.teamId);
 
     return {
         teamId: params.teamId,

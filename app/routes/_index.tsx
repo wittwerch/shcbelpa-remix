@@ -8,7 +8,7 @@ import {fetchVideos} from "~/lib/video";
 import AlbumList from "~/components/AlbumList";
 import {fetchAlbums} from "~/lib/flickr";
 import Resultbox from "~/components/Resultbox";
-import {fetchLatestPosts, fetchResults} from "~/lib/api";
+import {getLatestPosts, getResults} from "~/lib/api";
 import BlogpostList from "~/components/BlogpostList";
 import {cn} from "~/lib/lib";
 import React, {Suspense} from "react";
@@ -30,10 +30,10 @@ export const loader = async () => {
 
     const albums = fetchAlbums();
     const videos = fetchVideos()
-    const posts = fetchLatestPosts()
+    const posts = getLatestPosts()
     //const teams = fetchTeams()
 
-    const { games } = await fetchResults();
+    const { games } = await getResults();
 
     return defer({ games, videos, albums, posts });
 };

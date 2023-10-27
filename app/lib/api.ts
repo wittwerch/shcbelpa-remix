@@ -2,16 +2,16 @@ import type {BlogPost, Game, Player, PlayerWithPosition, Season, Sponsor, Stat, 
 
 export const apiEndpoint = process.env.API_ENDPOINT || "http://localhost:8117";
 
-type resultsResponse = {
+type getResultsResponse = {
   games: Array<{
     last: Game;
     next: Game;
   }>;
 };
 
-export const fetchResults = async () => {
+export const getResults = async () => {
   const res = await fetch(`${apiEndpoint}/api/results`);
-  return (await res.json()) as resultsResponse;
+  return (await res.json()) as getResultsResponse;
 };
 
 export const getSeason = async (teamId: string | number, seasonCode: string) => {
@@ -37,14 +37,12 @@ export const getRoster = async (teamId: string | number) => {
 };
 
 
-export const currentSeason = async (teamId: string | number) => {
-  const res = await fetch(`${apiEndpoint}/api/${teamId}/season`, {
-    cache: "no-cache",
-  });
+export const getCurrentSeason = async (teamId: string | number) => {
+  const res = await fetch(`${apiEndpoint}/api/${teamId}/season`);
   return (await res.json()) as Season;
 };
 
-type statsResponse = {
+type getStatsResponse = {
   team: Team;
   selectedSeason: Season;
   seasons: Season[];
@@ -54,40 +52,38 @@ type statsResponse = {
 };
 
 export const getStats = async (teamId: string | number, seasonCode: string) => {
-  const res = await fetch(`${apiEndpoint}/api/${teamId}/stats/${seasonCode}`, {
-    cache: "no-cache",
-  });
-  return (await res.json()) as statsResponse;
+  const res = await fetch(`${apiEndpoint}/api/${teamId}/stats/${seasonCode}`);
+  return (await res.json()) as getStatsResponse;
 };
 
-type playerResponse = {
+type getPlayerResponse = {
   player: Player;
   stats: Stat[];
 };
 
 export const getPlayer = async (slug: string) => {
   const res = await fetch(`${apiEndpoint}/api/player/${slug}`);
-  return (await res.json()) as playerResponse;
+  return (await res.json()) as getPlayerResponse;
 };
 
-export const getPlayers = async () => {
-  const res = await fetch(`${apiEndpoint}/api/player`);
-  return (await res.json()) as Player[];
-};
+// export const getPlayers = async () => {
+//   const res = await fetch(`${apiEndpoint}/api/player`);
+//   return (await res.json()) as Player[];
+// };
 
-export const fetchLatestPosts = async () => {
+export const getLatestPosts = async () => {
   const json = await fetch(`${apiEndpoint}/api/blog/latest`).then((res) => res.json());
 
   return json as BlogPost[];
 };
 
-export const getBlogPosts = async () => {
-  const json = await fetch(`${apiEndpoint}/api/blog`).then((res) => res.json());
+// export const getBlogPosts = async () => {
+//   const json = await fetch(`${apiEndpoint}/api/blog`).then((res) => res.json());
+//
+//   return json.posts as BlogPost[];
+// };
 
-  return json.posts as BlogPost[];
-};
-
-export const getBlogPost = async (slug: string) => {
+export const getPost = async (slug: string) => {
   const res = await fetch(`${apiEndpoint}/api/blog/${slug}`, {
     cache: "no-cache",
   });
