@@ -1,8 +1,7 @@
 import React from "react";
-import type {Player,PlayerWithPosition} from "~/types";
-import {Link} from "@remix-run/react";
-
-const IMAGEKIT_PARAMS = "tr=w-274,h-274,fo-auto,e-grayscale";
+import type { Player, PlayerWithPosition } from "~/types";
+import { Link } from "@remix-run/react";
+import { IKImage } from "imagekitio-react";
 
 type IProps = {
   players: PlayerWithPosition[];
@@ -20,16 +19,28 @@ export default function PlayerList({ players }: IProps) {
             <Link to={`/player/${player.slug}`}>
               <div className="flex-1 flex flex-col">
                 <div className="relative w-full">
-                  <img
-                    height={274}
+                  <IKImage
                     width={274}
-                    className="object-cover h-88 md:64  w-full flex-shrink-0 mx-auto bg-black"
-                    src={
+                    height={274}
+                    path={
                       player.photo
-                        ? `https://ik.imagekit.io/shcbelpa/${player.photo}?${IMAGEKIT_PARAMS}`
-                        : `https://ik.imagekit.io/shcbelpa/empty-profile.jpg?${IMAGEKIT_PARAMS}`
+                        ? `/storage/${player.photo}`
+                        : `/storage/empty-profile.jpg?`
                     }
+                    transformation={[
+                      {
+                        height: "274",
+                        width: "274",
+                      },
+                      {
+                        focus: "auto",
+                        effectGray: "1",
+                      },
+                    ]}
+                    loading="lazy"
+                    lqip={{ active: true }}
                     alt={`${player.first_name} ${player.last_name}`}
+                    className="object-cover h-88 md:64  w-full flex-shrink-0 mx-auto bg-black"
                   />
                 </div>
 

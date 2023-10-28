@@ -4,12 +4,13 @@ import {
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-  NavigationMenuTrigger
+  NavigationMenuTrigger,
 } from "~/components/ui/NavigationMenu";
-import {cn} from "~/lib/lib";
-import {Link} from "@remix-run/react";
+import { cn } from "~/lib/lib";
+import { Link } from "@remix-run/react";
 import React from "react";
-import type {Team} from "~/types";
+import type { Team } from "~/types";
+import { IKImage } from "imagekitio-react";
 
 export type NavigationItem = {
   title: string;
@@ -18,16 +19,14 @@ export type NavigationItem = {
 };
 
 const createNavigationItems = (teams: Team[]) => {
-  return (
-      teams.map((team: Team) => {
-        const seasonCode = '2324' // @TODO: get current season
-        return {
-          title: team.league.name,
-          href: `/teams/${team.id}/season/${seasonCode}`,
-          description: "",
-        };
-      })
-  ) as NavigationItem[];
+  return teams.map((team: Team) => {
+    const seasonCode = "2324"; // @TODO: get current season
+    return {
+      title: team.league.name,
+      href: `/teams/${team.id}/season/${seasonCode}`,
+      description: "",
+    };
+  }) as NavigationItem[];
 };
 
 const staticItems = [
@@ -48,12 +47,7 @@ const staticItems = [
   },
 ];
 
-export function NavBar({
-  teams,
-}: {
-  teams: Team[];
-}) {
-
+export function NavBar({ teams }: { teams: Team[] }) {
   const navigationItems = createNavigationItems(teams);
 
   return (
@@ -63,13 +57,31 @@ export function NavBar({
           <Link to="/">
             <div className="flex items-center">
               <div className="flex-shrink-0">
-                <img
+                <IKImage
+                  path="/img/logo_belpa.png"
                   height={56}
                   width={56}
-                  className="h-14"
-                  src="/img/logo_belpa.png"
-                  alt="SHC Belpa 1107"
+                  transformation={[
+                    {
+                      height: "56",
+                      width: "56",
+                    },
+                  ]}
                 />
+                {/*<Image*/}
+                {/*  loaderUrl="/api/image"*/}
+                {/*  src="/img/logo_belpa.png"*/}
+                {/*  responsive={[*/}
+                {/*    {*/}
+                {/*      size: {*/}
+                {/*        width: 100,*/}
+                {/*        height: 100,*/}
+                {/*      },*/}
+                {/*      maxWidth: 200,*/}
+                {/*    },*/}
+                {/*  ]}*/}
+                {/*  dprVariants={[1, 3]}*/}
+                {/*/>*/}
               </div>
               <span className="ml-4 text-white antialiased font-semibold tracking-wide">
                 SHC Belpa 1107

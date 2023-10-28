@@ -1,22 +1,26 @@
-import type {Sponsor} from "~/types";
-import {getSponsors} from "~/lib/api";
-import type {LoaderFunctionArgs} from "@remix-run/node";
-import {useLoaderData} from "@remix-run/react";
+import type { Sponsor } from "~/types";
+import { getSponsors } from "~/lib/api";
+import type { LoaderFunctionArgs } from "@remix-run/node";
+import { useLoaderData } from "@remix-run/react";
 import SingleColumnPage from "~/components/ui/SingleColumnPage";
 import PrimaryTitle from "~/components/ui/primary-title";
-
-const IMAGEKIT_PARAMS = "tr=w-252";
+import { IKImage } from "imagekitio-react";
+import React from "react";
 
 const SponsorCard = ({ sponsor }: { sponsor: Sponsor }) => (
   <div className="flex flex-col rounded-lg shadow-md overflow-hidden">
     <a href={sponsor.url} target="_blank" className="block" rel="noreferrer">
       <div className="flex-shrink-0">
-        <img
+        <IKImage
           width={252}
-          height={192}
           className="h-48 w-full object-contain"
-          src={`https://ik.imagekit.io/shcbelpa/${sponsor.logo}?${IMAGEKIT_PARAMS}`}
+          path={`/storage/${sponsor.logo}`}
           alt={sponsor.name}
+          transformation={[
+            {
+              width: "252",
+            },
+          ]}
         />
       </div>
       <div className="flex-1 bg-white p-6 flex flex-col justify-between">
@@ -30,14 +34,13 @@ const SponsorCard = ({ sponsor }: { sponsor: Sponsor }) => (
   </div>
 );
 
-export async function loader({ params, }: LoaderFunctionArgs) {
-    const sponsors = await getSponsors();
-    return { sponsors }
+export async function loader({ params }: LoaderFunctionArgs) {
+  const sponsors = await getSponsors();
+  return { sponsors };
 }
 
 export default function Page() {
-
-    const data = useLoaderData<typeof loader>();
+  const data = useLoaderData<typeof loader>();
 
   return (
     <SingleColumnPage>

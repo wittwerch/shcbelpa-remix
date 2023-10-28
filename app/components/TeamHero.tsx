@@ -1,20 +1,21 @@
 import React from "react";
-import type {Team} from "~/types";
+import type { Team } from "~/types";
+import { IKImage } from "imagekitio-react";
 
 interface IProps {
-    team: Team;
+  team: Team;
 }
 
 export default function TeamHero({ team }: IProps) {
-
   const hetHeaderImage = (teamLevel: string) => {
     switch (teamLevel) {
-        case "1":
-          return "/img/hero_1.png";
+      case "1":
+        return "/img/hero_1.png";
       case "2":
         return "/img/hero_2.png";
       case "A":
         return "/img/hero_3.png";
+
       case "C":
         return "/img/hero_5.png";
       default:
@@ -24,13 +25,21 @@ export default function TeamHero({ team }: IProps) {
 
   return (
     <div className="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
-      <img
+      <IKImage
         width={1216}
         height={256}
-        src={hetHeaderImage(team.level)}
-        alt=""
+        path={hetHeaderImage(team.level)}
+        transformation={[
+          {
+            height: "256",
+            width: "1216",
+          },
+        ]}
+        lqip={{ active: true }}
+        alt="Team Header Image"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
       />
+
       <div
         className="hidden sm:absolute sm:-top-10 sm:right-1/2 sm:-z-10 sm:mr-10 sm:block sm:transform-gpu sm:blur-3xl"
         aria-hidden="true"
