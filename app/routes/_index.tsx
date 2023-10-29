@@ -2,7 +2,7 @@ import type { MetaFunction } from "@remix-run/node";
 import { defer } from "@remix-run/node";
 import { useLoaderData, useNavigation } from "@remix-run/react";
 import { BellAlertIcon } from "@heroicons/react/24/outline";
-import { shortDateTime } from "~/lib/date";
+import { formatDateTimeFromIsoString } from "~/lib/date";
 import VideoList from "~/components/VideoList";
 import { fetchVideos } from "~/lib/video";
 import AlbumList from "~/components/AlbumList";
@@ -11,9 +11,10 @@ import Resultbox from "~/components/Resultbox";
 import { getLatestPosts, getResults } from "~/lib/api";
 import BlogpostList from "~/components/BlogpostList";
 import { cn } from "~/lib/lib";
-import React, { Suspense } from "react";
+import React, { Suspense, useMemo } from "react";
 import { Skeleton } from "~/components/ui/Skeleton";
 import { Await } from "react-router";
+import { atHome } from "~/lib/game";
 
 export const meta: MetaFunction = () => {
   return [
@@ -32,8 +33,6 @@ export function headers() {
   };
 }
 
-const parseDateTime = (dateTime: string) => new Date(dateTime);
-
 export const loader = async () => {
   const albums = fetchAlbums();
   const videos = fetchVideos();
@@ -49,14 +48,26 @@ export default function Index() {
   const navigation = useNavigation();
   const { games, albums, videos, posts } = useLoaderData<typeof loader>();
 
-  const { next: nextHomeGame } = games.reduce((closestGame, game) => {
-    if (game.next == null) return closestGame;
-    const gameDate = parseDateTime(game.next.date_time);
-    if (!closestGame || gameDate < parseDateTime(closestGame.next.date_time)) {
-      return game;
-    }
-    return closestGame;
-  });
+  const homeGames = useMemo(
+    () =>
+      games
+        .flatMap((game) => {
+          if (game.next && atHome(game.next)) return game.next;
+          return undefined;
+        })
+        .filter((game) => game !== undefined)
+        .sort((a, b) => {
+          if (a == undefined || b == undefined) return 0;
+          if (new Date(b.date_time) > new Date(a.date_time)) {
+            return -1;
+          } else {
+            return 1;
+          }
+        }),
+    [games],
+  );
+
+  const nextHomeGame = homeGames[0] || null;
 
   return (
     <>
@@ -68,7 +79,7 @@ export default function Index() {
               <h1 className="tracking-tight ml-4 md:ml-2 text-gray-200">
                 Nächstes Heimspiel: {nextHomeGame.away_team.club.name} (
                 {nextHomeGame.league.name}) /{" "}
-                {shortDateTime(nextHomeGame.date_time)}
+                {formatDateTimeFromIsoString(nextHomeGame.date_time)}
               </h1>
             </div>
           )}

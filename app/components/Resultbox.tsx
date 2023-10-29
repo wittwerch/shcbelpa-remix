@@ -5,11 +5,12 @@ import {
   getHomeGoals,
   toOvertime,
   toShootout,
-} from '~/lib/game'
-import type {Game} from "~/types";
+} from "~/lib/game";
+import type { Game } from "~/types";
 import PrimaryTitle from "~/components/ui/primary-title";
-import {TeamLogo} from "~/components/ui/TeamLogo";
-import {shortDateTime} from "~/lib/date";
+import { TeamLogo } from "~/components/ui/TeamLogo";
+import { shortDateTime } from "~/lib/date";
+import { cn } from "~/lib/lib";
 
 // create props to pass to the component
 type IProps = {
@@ -61,8 +62,13 @@ export default function Resultbox({ games }: IProps) {
                 </div>
               </div>
               {next && (
-                <div className="pt-2 text-sm md:text-xs leading-5 font-semibold text-gray-600 md:text-gray-500 truncate flex flex-row items-center">
-                  <CalendarDaysIcon className="h-4 mr-1" />
+                <div className="pt-2 text-sm md:text-xs leading-5 font-bold text-gray-600 md:text-gray-500 truncate flex flex-row items-center">
+                  <CalendarDaysIcon
+                    className={cn(
+                      atHome(next) ? "text-red-700" : "",
+                      "h-4 mr-1",
+                    )}
+                  />
                   {atHome(next)
                     ? `${next.away_team.club.code} (in Belp)`
                     : `${next.home_team.club.code} (auswärts)`}
