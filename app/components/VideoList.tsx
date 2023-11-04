@@ -31,7 +31,7 @@ export default function VideoList({ videos }: IProps) {
           </a>
         </div>
 
-        <div className="mx-auto mt-5 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <div className="mx-auto mt-3 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 pt-5 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {videos.map((video) => (
             <article
               key={video._id}
