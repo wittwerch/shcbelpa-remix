@@ -1,8 +1,13 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 export default {
   ignoredRouteFiles: ["**/.*"],
-  // appDirectory: "app",
-  // assetsBuildDirectory: "public/build",
-  // publicPath: "/build/",
-  // serverBuildPath: "build/index.js",
+  routes(defineRoutes) {
+    return defineRoutes((route) => {
+      route(":teamId", "teams/layout.tsx", () => {
+        route("season/:seasonCode", "teams/season.tsx");
+        route("players", "teams/players.tsx");
+        route("stats/:seasonCode", "teams/stats.tsx");
+      });
+    });
+  },
 };

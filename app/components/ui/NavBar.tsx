@@ -23,7 +23,7 @@ const createNavigationItems = (teams: Team[]) => {
     const seasonCode = "2324"; // @TODO: get current season
     return {
       title: team.league.name,
-      href: `/teams/${team.id}/season/${seasonCode}`,
+      href: `/${team.id}/season/${seasonCode}`,
       description: "",
     };
   }) as NavigationItem[];

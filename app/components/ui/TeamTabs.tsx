@@ -26,17 +26,17 @@ export function TeamTabs({ team, season }: IProps) {
   const tabs: Tab[] = [
     {
       name: "Spiele",
-      href: `/teams/${teamId}/season/${seasonCode}`,
+      href: `/${teamId}/season/${seasonCode}`,
       match: "season",
     },
     {
       name: "Kader",
-      href: `/teams/${teamId}/players`,
+      href: `/${teamId}/players`,
       match: "players",
     },
     {
       name: "Stats",
-      href: `/teams/${teamId}/stats/${seasonCode}`,
+      href: `/${teamId}/stats/${seasonCode}`,
       match: "stats",
     },
   ];
@@ -50,27 +50,12 @@ export function TeamTabs({ team, season }: IProps) {
         <NavLink
           key={tab.name}
           to={tab.href}
-          // className={({ isActive, isPending }) =>
-          //     isActive
-          //         ? "bg-gray-200 text-red-700"
-          //         : isPending
-          //             ? "bg-gray-200 text-red-700"
-          //             : "px-3 py-2 text-sm font-medium mt-4"
-          // }
           className={({ isActive }) =>
             cn(
               isActive ? "bg-gray-200 text-red-700" : "",
               "px-3 py-2 text-sm font-medium mt-4",
             )
           }
-
-          // className={classNames(
-          //   pathname.includes(tab.match)
-          //     ? ""
-          //     : "text-gray-500 hover:text-gray-700",
-          //   "px-3 py-2 text-sm font-medium mt-4",
-          // )}
-          // aria-current={tab.href == pathname}
         >
           {tab.name}
         </NavLink>

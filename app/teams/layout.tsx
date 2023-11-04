@@ -29,7 +29,7 @@ export async function loader({ params }: LoaderFunctionArgs) {
   };
 }
 
-export default function Teams() {
+export default function Layout() {
   const navigation = useNavigation();
   const { teamId, currentSeason } = useLoaderData<typeof loader>();
 
