@@ -3,6 +3,15 @@ import type { Video } from "~/types";
 export const fetchVideos = async () => {
   // await new Promise(resolve => setTimeout(resolve, 2000));
 
+  const teams = [
+    "shc-belpa-1107-nla-904033923",
+    "shc-belpa-1107-2-liga-904033924",
+    "shc-belpa-1107-u18-904033925",
+    "shc-belpa-1107-u15-904043337",
+    "shc-belpa-1107-u12-904043338",
+    "shc-belpa-1107-damen-904043362",
+  ];
+
   try {
     const response = await fetch("https://sport.video/search/search-api/", {
       method: "POST",
@@ -15,8 +24,7 @@ export const fetchVideos = async () => {
             index_name: "game",
             filter: {
               "league.channel.slug.keyword": "streethockey",
-              "away_team.slug.keyword|home_team.slug.keyword":
-                "shc-belpa-1107-nla-904033923",
+              "away_team.slug.keyword|home_team.slug.keyword": teams.join("|"),
             },
             filter_range: { created: { key: "any_time" } },
             full_text: {},
@@ -25,7 +33,7 @@ export const fetchVideos = async () => {
               sort_1: "-created",
             },
             from: 0,
-            size: 10,
+            size: 9,
           },
         },
       }),

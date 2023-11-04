@@ -25,8 +25,6 @@ export default function VideoList({ videos }: IProps) {
     return <></>;
   }
 
-  console.log(videos[0]._source);
-
   return (
     <div className="">
       <div className="mx-auto max-w-2xl px-4 pb-8 sm:px-6 sm:pb-12 lg:max-w-7xl lg:px-8">
