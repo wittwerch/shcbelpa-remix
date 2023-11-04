@@ -1,5 +1,5 @@
 import type { FlickrAlbum } from "~/types";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { Link } from "@remix-run/react";
 
 const FLICKR_URL = "https://www.flickr.com/photos/142317525@N03/albums";

@@ -1,4 +1,4 @@
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 
 function Skeleton({ title }: { title: string }) {
   // loop 6 times

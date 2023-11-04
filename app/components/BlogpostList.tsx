@@ -1,4 +1,4 @@
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { Link } from "@remix-run/react";
 import type { BlogPost } from "~/types";
 import { formatDateFromIsoString } from "~/lib/date";

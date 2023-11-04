@@ -1,6 +1,6 @@
 import React from "react";
 import type { Stat } from "~/types";
-import SecondaryTitle from "~/components/ui/secondary-title";
+import SecondaryTitle from "~/components/ui/SecondaryTitle";
 import TableComponent from "./ui/table/TableComponent";
 import TableRow from "~/components/ui/table/TableRow";
 import TableHeader from "~/components/ui/table/TableHeader";

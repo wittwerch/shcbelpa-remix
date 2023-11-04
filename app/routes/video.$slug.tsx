@@ -1,5 +1,5 @@
 import SingleColumnPage from "~/components/ui/SingleColumnPage";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { useParams } from "@remix-run/react";
 
 export default function Page() {

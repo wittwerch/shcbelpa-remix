@@ -1,4 +1,4 @@
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import SingleColumnPage from "~/components/ui/SingleColumnPage";
 
 export default function Verein() {

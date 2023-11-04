@@ -9,7 +9,7 @@ import TeamHero from "~/components/TeamHero";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import invariant from "tiny-invariant";
 import { getCurrentSeason } from "~/lib/api";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { TeamTabs } from "~/components/ui/TeamTabs";
 import { cn } from "~/lib/utils";
 import type { Team } from "~/types";

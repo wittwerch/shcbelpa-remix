@@ -1,4 +1,4 @@
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { PlayCircleIcon } from "@heroicons/react/20/solid";
 import { Link } from "@remix-run/react";
 import type { Video } from "~/types";

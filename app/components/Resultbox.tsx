@@ -7,7 +7,7 @@ import {
   toShootout,
 } from "~/lib/game";
 import type { Game } from "~/types";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { TeamLogo } from "~/components/ui/TeamLogo";
 import { shortDateTime } from "~/lib/date";
 import { cn } from "~/lib/utils";

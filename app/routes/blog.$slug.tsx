@@ -1,5 +1,5 @@
 import SingleColumnPage from "~/components/ui/SingleColumnPage";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { useLoaderData } from "@remix-run/react";
 import { getPost } from "~/lib/api";
 import type { LoaderFunctionArgs, MetaFunction } from "@remix-run/node";

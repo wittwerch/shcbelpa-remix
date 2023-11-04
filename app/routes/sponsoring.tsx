@@ -3,7 +3,7 @@ import { getSponsors } from "~/lib/api";
 import type { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import SingleColumnPage from "~/components/ui/SingleColumnPage";
-import PrimaryTitle from "~/components/ui/primary-title";
+import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { IKImage } from "imagekitio-react";
 import React from "react";
 
