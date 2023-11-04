@@ -10,7 +10,7 @@ import type { Game } from "~/types";
 import PrimaryTitle from "~/components/ui/primary-title";
 import { TeamLogo } from "~/components/ui/TeamLogo";
 import { shortDateTime } from "~/lib/date";
-import { cn } from "~/lib/lib";
+import { cn } from "~/lib/utils";
 
 // create props to pass to the component
 type IProps = {

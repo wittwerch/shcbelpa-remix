@@ -10,7 +10,7 @@ import { fetchAlbums } from "~/lib/flickr";
 import Resultbox from "~/components/Resultbox";
 import { getLatestPosts, getResults } from "~/lib/api";
 import BlogpostList from "~/components/BlogpostList";
-import { cn } from "~/lib/lib";
+import { cn } from "~/lib/utils";
 import React, { Suspense, useMemo } from "react";
 import { Skeleton } from "~/components/ui/Skeleton";
 import { Await } from "react-router";

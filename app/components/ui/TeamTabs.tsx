@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink, useParams } from "@remix-run/react";
-import { cn } from "~/lib/lib";
+import { cn } from "~/lib/utils";
+
 import type { Season, Team } from "~/types";
 
 export type Tab = {

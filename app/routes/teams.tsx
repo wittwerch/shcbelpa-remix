@@ -11,7 +11,7 @@ import invariant from "tiny-invariant";
 import { getCurrentSeason } from "~/lib/api";
 import PrimaryTitle from "~/components/ui/primary-title";
 import { TeamTabs } from "~/components/ui/TeamTabs";
-import { cn } from "~/lib/lib";
+import { cn } from "~/lib/utils";
 import type { Team } from "~/types";
 
 // export const metadata: Metadata = {

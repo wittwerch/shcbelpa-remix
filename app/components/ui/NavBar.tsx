@@ -6,7 +6,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "~/components/ui/NavigationMenu";
-import { cn } from "~/lib/lib";
+import { cn } from "~/lib/utils";
 import { Link } from "@remix-run/react";
 import React from "react";
 import type { Team } from "~/types";
