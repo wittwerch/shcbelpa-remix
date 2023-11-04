@@ -1,4 +1,14 @@
-import type {BlogPost, Game, Player, PlayerWithPosition, Season, Sponsor, Stat, Table, Team} from '~/types';
+import type {
+  BlogPost,
+  Game,
+  Player,
+  PlayerWithPosition,
+  Season,
+  Sponsor,
+  Stat,
+  Table,
+  Team,
+} from "~/types";
 
 export const apiEndpoint = process.env.API_ENDPOINT || "http://localhost:8117";
 
@@ -14,16 +24,17 @@ export const getResults = async () => {
   return (await res.json()) as getResultsResponse;
 };
 
-export const getSeason = async (teamId: string | number, seasonCode: string) => {
-  const res = await fetch(
-      `${apiEndpoint}/api/${teamId}/season/${seasonCode}`
-  );
+export const getSeason = async (
+  teamId: string | number,
+  seasonCode: string,
+) => {
+  const res = await fetch(`${apiEndpoint}/api/${teamId}/season/${seasonCode}`);
 
   return (await res.json()) as {
     team: Team;
     seasons: Season[];
     games: Game[];
-    table: Table,
+    table: Table;
   };
 };
 
@@ -35,7 +46,6 @@ export const getRoster = async (teamId: string | number) => {
     players: PlayerWithPosition[];
   };
 };
-
 
 export const getCurrentSeason = async (teamId: string | number) => {
   const res = await fetch(`${apiEndpoint}/api/${teamId}/season`);
@@ -72,7 +82,9 @@ export const getPlayer = async (slug: string) => {
 // };
 
 export const getLatestPosts = async () => {
-  const json = await fetch(`${apiEndpoint}/api/blog/latest`).then((res) => res.json());
+  const json = await fetch(`${apiEndpoint}/api/blog/latest`).then((res) =>
+    res.json(),
+  );
 
   return json as BlogPost[];
 };
@@ -101,7 +113,7 @@ export const getSponsors = async () => {
 
 export const fetchTeams = async () => {
   const json = await fetch(`${apiEndpoint}/api/teams`).then((res) =>
-      res.json(),
+    res.json(),
   );
 
   return json as Team[];

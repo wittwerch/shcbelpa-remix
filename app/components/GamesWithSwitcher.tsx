@@ -8,8 +8,8 @@ import {
   SelectValue,
 } from "~/components/ui/Select";
 
-import {DateTime} from "luxon";
-import type {Game, Season} from "~/types";
+import { DateTime } from "luxon";
+import type { Game, Season } from "~/types";
 import GameList from "~/components/GameList";
 import { useNavigate } from "@remix-run/react";
 
@@ -28,7 +28,7 @@ export default function GamesWithSwitcher({
 }: IProps) {
   // const router = useRouter();
   // const { animatedRoute } = useAnimatedRouter();
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const onChange = (value: string) => {
     navigate(`/teams/${teamId}/season/${value}`);

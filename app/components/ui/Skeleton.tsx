@@ -1,6 +1,6 @@
 import PrimaryTitle from "~/components/ui/primary-title";
 
-function Skeleton({title}: {title: string}) {
+function Skeleton({ title }: { title: string }) {
   // loop 6 times
   const skeletons = Array.from({ length: 6 }, (_, i) => i);
 

@@ -1,7 +1,7 @@
 import React from "react";
-import {NavLink, useParams} from "@remix-run/react";
-import {cn} from "~/lib/lib";
-import type {Season, Team} from "~/types";
+import { NavLink, useParams } from "@remix-run/react";
+import { cn } from "~/lib/lib";
+import type { Season, Team } from "~/types";
 
 export type Tab = {
   name: string;
@@ -11,14 +11,13 @@ export type Tab = {
 
 interface IProps {
   team: Team;
-  season: Season,
+  season: Season;
 }
 
 export function TeamTabs({ team, season }: IProps) {
-
   const params = useParams();
 
-  const teamId = team.id
+  const teamId = team.id;
 
   // Fallback to season from loader data if not in params (on roster page for example)
   const seasonCode = params.seasonCode || season.code;
@@ -34,7 +33,11 @@ export function TeamTabs({ team, season }: IProps) {
       href: `/teams/${teamId}/players`,
       match: "players",
     },
-    { name: "Stats", href: `/teams/${teamId}/stats/${seasonCode}`, match: "stats" },
+    {
+      name: "Stats",
+      href: `/teams/${teamId}/stats/${seasonCode}`,
+      match: "stats",
+    },
   ];
 
   return (
@@ -53,9 +56,12 @@ export function TeamTabs({ team, season }: IProps) {
           //             ? "bg-gray-200 text-red-700"
           //             : "px-3 py-2 text-sm font-medium mt-4"
           // }
-            className={({ isActive }) =>
-                cn(isActive ? "bg-gray-200 text-red-700" : '', 'px-3 py-2 text-sm font-medium mt-4')
-            }
+          className={({ isActive }) =>
+            cn(
+              isActive ? "bg-gray-200 text-red-700" : "",
+              "px-3 py-2 text-sm font-medium mt-4",
+            )
+          }
 
           // className={classNames(
           //   pathname.includes(tab.match)

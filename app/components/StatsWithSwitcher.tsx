@@ -1,6 +1,6 @@
-import type {Season, Stat} from "~/types";
-import {useNavigate} from "@remix-run/react";
-import {DateTime} from "luxon";
+import type { Season, Stat } from "~/types";
+import { useNavigate } from "@remix-run/react";
+import { DateTime } from "luxon";
 import {
   Select,
   SelectContent,
@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectLabel,
   SelectTrigger,
-  SelectValue
+  SelectValue,
 } from "~/components/ui/Select";
 import StatsTable from "~/components/StatsTable";
 
@@ -27,7 +27,6 @@ export default function StatsWithSwitcher({
   seasons,
   stats,
 }: IProps) {
-
   const navigate = useNavigate();
 
   const onChange = (value: string) => {

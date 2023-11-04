@@ -1,5 +1,5 @@
 import React from "react";
-import type {Stat} from "~/types";
+import type { Stat } from "~/types";
 import SecondaryTitle from "~/components/ui/secondary-title";
 import TableComponent from "./ui/table/TableComponent";
 import TableRow from "~/components/ui/table/TableRow";

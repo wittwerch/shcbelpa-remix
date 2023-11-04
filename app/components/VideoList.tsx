@@ -1,18 +1,16 @@
 import PrimaryTitle from "~/components/ui/primary-title";
 import { PlayCircleIcon } from "@heroicons/react/20/solid";
-import {Link} from "@remix-run/react";
-import type {Video} from "~/types";
+import { Link } from "@remix-run/react";
+import type { Video } from "~/types";
 
 const ALL_VIDEOS_URL =
   "https://www.swiss-streethockey.ch/de-de/meisterschaft/highlightvideos.aspx";
-
 
 type IProps = {
   videos: Array<Video>;
 };
 
 export default function VideoList({ videos }: IProps) {
-
   if (videos.length == 0) {
     return <></>;
   }
@@ -25,7 +23,8 @@ export default function VideoList({ videos }: IProps) {
           <a
             href={ALL_VIDEOS_URL}
             className="hidden text-sm font-medium text-red-600 hover:text-red-500 md:block"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             Alle Videos
             <span aria-hidden="true"> &rarr;</span>

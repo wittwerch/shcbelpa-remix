@@ -1,7 +1,7 @@
 import PrimaryTitle from "~/components/ui/primary-title";
-import {Link} from "@remix-run/react";
-import type {BlogPost} from "~/types";
-import {formatDateFromIsoString} from "~/lib/date";
+import { Link } from "@remix-run/react";
+import type { BlogPost } from "~/types";
+import { formatDateFromIsoString } from "~/lib/date";
 
 // create props to pass to the component
 type IProps = {
@@ -9,7 +9,6 @@ type IProps = {
 };
 
 export default function BlogpostList({ posts }: IProps) {
-
   if (posts.length == 0) {
     return <></>;
   }

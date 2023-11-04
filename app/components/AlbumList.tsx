@@ -1,6 +1,6 @@
-import type {FlickrAlbum} from "~/types";
+import type { FlickrAlbum } from "~/types";
 import PrimaryTitle from "~/components/ui/primary-title";
-import {Link} from "@remix-run/react";
+import { Link } from "@remix-run/react";
 
 const FLICKR_URL = "https://www.flickr.com/photos/142317525@N03/albums";
 
@@ -9,7 +9,6 @@ type IProps = {
 };
 
 export default function AlbumList({ albums }: IProps) {
-
   if (albums.length == 0) {
     return <></>;
   }
@@ -22,7 +21,8 @@ export default function AlbumList({ albums }: IProps) {
           <a
             href={FLICKR_URL}
             className="hidden text-sm font-medium text-red-600 hover:text-red-500 md:block"
-            target="_blank" rel="noreferrer"
+            target="_blank"
+            rel="noreferrer"
           >
             Alle Bilder
             <span aria-hidden="true"> &rarr;</span>

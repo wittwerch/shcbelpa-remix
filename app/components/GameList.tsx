@@ -1,11 +1,11 @@
-import {DateTime} from "luxon";
+import { DateTime } from "luxon";
 import React from "react";
-import type {Game} from "~/types";
+import type { Game } from "~/types";
 import TableComponent from "~/components/ui/table/TableComponent";
 import TableRow from "~/components/ui/table/TableRow";
 import TableCell from "~/components/ui/table/TableCell";
-import {formatDateFromIsoString} from "~/lib/date";
-import {TeamLogo} from "~/components/ui/TeamLogo";
+import { formatDateFromIsoString } from "~/lib/date";
+import { TeamLogo } from "~/components/ui/TeamLogo";
 
 type IProps = {
   games: Game[];

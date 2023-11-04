@@ -1,4 +1,4 @@
-import type {Game} from "~/types";
+import type { Game } from "~/types";
 
 export const toOvertime = (game: Game) => {
   return game.result.includes("n.V.");
