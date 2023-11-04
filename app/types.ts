@@ -98,12 +98,103 @@ export type Stat = {
 };
 
 export type Video = {
+  _index: string;
+  _type: string;
   _id: string;
+  _score: number | null;
   _source: {
-    thumbnail: string;
-    name: string;
+    country: {
+      header_image: string | null;
+      postroll_images: any[];
+      code: string;
+      flag: string;
+      created: string;
+      prefix: string;
+      is_removed: boolean;
+      language: string;
+      disable_all_ads: boolean;
+      video_branding: string | null;
+      visible_in_filter: boolean;
+      preroll_videos: any[];
+      name: string;
+      modified: string;
+      id: number;
+      disable_registration: boolean;
+      disable_postroll: boolean;
+      header_image_url: string | null;
+      slug: string;
+      order: number;
+    };
+    paused: string;
+    num_of_videos: number;
+    user_name: string;
+    watermark_views: any[];
+    total_views: number;
+    is_livestream: boolean;
+    is_removed: boolean;
+    break_duration: number;
+    away_team: {
+      ext_id: string | null;
+      created: string;
+      name: string;
+      club: any;
+      team_type_id: number;
+      team_type: string;
+      id: number;
+      slug: string;
+      status: string;
+    };
+    home_goals: number;
+    banner_views: any[];
+    clubs: number[];
+    modified: string;
+    id: number;
     slug: string;
+    postroll_views: any[];
+    recording_started: string;
+    thumbnail: string;
+    header_views: any[];
+    teams: number[];
+    leagues: string[];
+    created: string;
+    league: {
+      channel: any;
+      name: string;
+      country_slug: string;
+      id: number;
+      sports_slug: string;
+      sport: any;
+      url: string;
+      slug: string;
+    };
+    offline_id: string;
+    away_goals: number;
+    version: string;
+    url: string;
+    iframe_url: string;
+    name: string;
+    status_from_mobile: string;
+    imei: string;
+    country_slug: string;
+    preroll_views: any[];
+    sports_slug: string;
+    home_team: {
+      ext_id: string | null;
+      created: string;
+      name: string;
+      club: any;
+      team_type_id: number;
+      team_type: string;
+      id: number;
+      slug: string;
+      status: string;
+    };
+    resumed: string;
+    status_changed: string;
+    user: number;
+    status: string;
   };
+  sort: number[];
 };
 
 export type BlogPost = {

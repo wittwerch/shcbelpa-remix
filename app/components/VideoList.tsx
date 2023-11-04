@@ -2,6 +2,7 @@ import PrimaryTitle from "~/components/ui/PrimaryTitle";
 import { PlayCircleIcon } from "@heroicons/react/20/solid";
 import { Link } from "@remix-run/react";
 import type { Video } from "~/types";
+import { formatDateFromIsoString } from "~/lib/date";
 
 const ALL_VIDEOS_URL =
   "https://www.swiss-streethockey.ch/de-de/meisterschaft/highlightvideos.aspx";
@@ -10,10 +11,21 @@ type IProps = {
   videos: Array<Video>;
 };
 
+function type(video: Video) {
+  // if home team name is shcbelpa, grab it from there
+  if (video._source.home_team.club.name === "SHC Belpa 1107") {
+    return video._source.home_team.team_type;
+  } else {
+    return video._source.away_team.team_type;
+  }
+}
+
 export default function VideoList({ videos }: IProps) {
   if (videos.length == 0) {
     return <></>;
   }
+
+  console.log(videos[0]._source);
 
   return (
     <div className="">
@@ -52,12 +64,17 @@ export default function VideoList({ videos }: IProps) {
                   <div className="flex items-center gap-x-2 text-xs"></div>
                   <div className="group relative">
                     <h3 className="mt-2 font-semibold leading-5 text-gray-900 group-hover:text-gray-600">
-                      <span className="absolute inset-0" />
-                      {video._source.name}
+                      <div className="flex flex-row justify-between mt-2 line-clamp-3 text-sm leading-6 text-gray-600">
+                        <span className="">{type(video)}</span>
+                        <span className="">
+                          {formatDateFromIsoString(video._source.created)}
+                        </span>
+                      </div>
+                      <div className="mt-2">
+                        {video._source.home_team.club.name} vs.{" "}
+                        {video._source.away_team.club.name}
+                      </div>
                     </h3>
-                    <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
-                      {/*{post.description}*/}
-                    </p>
                   </div>
                 </div>
               </Link>
