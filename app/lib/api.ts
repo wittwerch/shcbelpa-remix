@@ -1,6 +1,7 @@
 import type {
   BlogPost,
   Game,
+  GameWithEvents,
   Player,
   PlayerWithPosition,
   Season,
@@ -12,16 +13,14 @@ import type {
 
 export const apiEndpoint = process.env.API_ENDPOINT || "http://localhost:8117";
 
-type getResultsResponse = {
-  games: Array<{
-    last: Game;
-    next: Game;
-  }>;
+export const getLatestResults = async () => {
+  const res = await fetch(`${apiEndpoint}/api/games/results`);
+  return (await res.json()) as Game[];
 };
 
-export const getResults = async () => {
-  const res = await fetch(`${apiEndpoint}/api/results`);
-  return (await res.json()) as getResultsResponse;
+export const getUpcomingGames = async () => {
+  const res = await fetch(`${apiEndpoint}/api/games/upcoming`);
+  return (await res.json()) as Game[];
 };
 
 export const getSeason = async (
@@ -74,6 +73,12 @@ type getPlayerResponse = {
 export const getPlayer = async (slug: string) => {
   const res = await fetch(`${apiEndpoint}/api/player/${slug}`);
   return (await res.json()) as getPlayerResponse;
+};
+
+export const getGame = async (id: string) => {
+  const res = await fetch(`${apiEndpoint}/api/games/${id}`);
+
+  return (await res.json()) as GameWithEvents;
 };
 
 // export const getPlayers = async () => {

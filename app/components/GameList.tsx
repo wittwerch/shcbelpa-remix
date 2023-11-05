@@ -6,6 +6,7 @@ import TableRow from "~/components/ui/table/TableRow";
 import TableCell from "~/components/ui/table/TableCell";
 import { formatDateFromIsoString } from "~/lib/date";
 import { TeamLogo } from "~/components/ui/TeamLogo";
+import { NavLink } from "@remix-run/react";
 
 type IProps = {
   games: Game[];
@@ -43,7 +44,16 @@ export default function GameList({ games }: IProps) {
               <span className="lg:hidden">{game.home_team.club.code}</span>
             </div>
           </TableCell>
-          <TableCell className="font-extrabold">{game.result}</TableCell>
+          <TableCell>
+            <div className="flex flex-col items-center">
+              <div className="font-extrabold">{game.result}</div>
+              {game.result != "" && (
+                <div>
+                  <NavLink to={`/game/${game.id}`}>Gamecenter</NavLink>
+                </div>
+              )}
+            </div>
+          </TableCell>
           <TableCell>
             <div className="flex flex-row items-center">
               <span className="hidden lg:block">

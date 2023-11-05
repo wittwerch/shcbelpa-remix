@@ -66,6 +66,37 @@ export type Game = {
   };
 };
 
+export type Event = {
+  time: string;
+  type: "penalty" | "goal" | "period" | string;
+  result?: string | null;
+  team: string;
+  player: string;
+  assist1?: string | null;
+  assist2?: string | null;
+  penalty?: string | null;
+  description?: string | null;
+};
+
+export type GameWithEvents = {
+  game: Game;
+  events: Event[];
+  roster: {
+    home: Array<{
+      name: string;
+      number: string;
+      goals: number;
+      assists: number;
+    }>;
+    away: Array<{
+      name: string;
+      number: string;
+      goals: number;
+      assists: number;
+    }>;
+  };
+};
+
 export type Player = {
   id: number;
   first_name: string;
