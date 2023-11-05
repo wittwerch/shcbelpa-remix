@@ -30,7 +30,7 @@ export default function StatsWithSwitcher({
   const navigate = useNavigate();
 
   const onChange = (value: string) => {
-    navigate(`/teams/${teamId}/stats/${value}`);
+    navigate(`/${teamId}/stats/${value}`);
   };
 
   const getValue = (season: Season) => {

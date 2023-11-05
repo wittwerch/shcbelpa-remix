@@ -31,7 +31,7 @@ export default function GamesWithSwitcher({
   const navigate = useNavigate();
 
   const onChange = (value: string) => {
-    navigate(`/teams/${teamId}/season/${value}`);
+    navigate(`/${teamId}/season/${value}`);
   };
 
   const getValue = (season: Season) => {
